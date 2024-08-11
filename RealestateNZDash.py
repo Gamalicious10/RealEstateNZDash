@@ -26,18 +26,22 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Add custom CSS to set the background color to white
+# Add custom CSS to set background and sidebar colors
 st.markdown(
     """
     <style>
     .main {
-        background-color: white !important;
+        background-color: #f7f9fc !important;
     }
     .css-1d391kg {
-        background-color: white !important;
+        background-color: #f7f9fc !important;
     }
     .css-18e3th9 {
-        background-color: orange !important;
+        background-color: #1A4DA7 !important;  /* Sidebar background color */
+        color: white !important;  /* Sidebar text color */
+    }
+    .st-b4 {
+        color: white !important;
     }
     </style>
     """,
@@ -95,7 +99,7 @@ df_selection = df[
 # Title and subtitle with style and icons
 st.markdown(
     """
-    <h1 style='text-align: center; color: black;'>
+    <h1 style='text-align: center; color: #1A4DA7;'>
         Real Estate NZ Dashboard <img src="https://img.icons8.com/color/48/000000/bar-chart.png" alt="bar chart icon"/>
     </h1>
     """,
@@ -112,13 +116,13 @@ average_rent = df_selection["Rent"].mean()
 st.markdown(
     f"""
     <div style='display: flex; justify-content: space-around;'>
-        <div style='background-color: #f0f2f6; padding: 10px; border-radius: 10px; text-align: center; flex: 1; margin: 10px;'>
-            <h2 style='color: #333;'>Number of Properties Scraped</h2>
-            <p style='font-size: 24px; color: #333;'><b>{property_count}</b></p>
+        <div style='background-color: #1A4DA7; padding: 10px; border-radius: 10px; text-align: center; flex: 1; margin: 10px; color: white;'>
+            <h2 style='color: white;'>Number of Properties Scraped</h2>
+            <p style='font-size: 24px; color: white;'><b>{property_count}</b></p>
         </div>
-        <div style='background-color: #f0f2f6; padding: 10px; border-radius: 10px; text-align: center; flex: 1; margin: 10px;'>
-            <h2 style='color: #333;'>Average Rent</h2>
-            <p style='font-size: 24px; color: #333;'><b>${average_rent:.2f}</b></p>
+        <div style='background-color: #F46C3F; padding: 10px; border-radius: 10px; text-align: center; flex: 1; margin: 10px; color: white;'>
+            <h2 style='color: white;'>Average Rent</h2>
+            <p style='font-size: 24px; color: white;'><b>${average_rent:.2f}</b></p>
         </div>
     </div>
     """,
@@ -140,7 +144,7 @@ fig_average_rent = px.bar(
     x="Region",
     y="Rent",
     title="Average Rent by Region",
-    color_discrete_sequence=["#1A4DA7"],  # Set a single color for the bars
+    color_discrete_sequence=["#1A4DA7"],  # Set a single color for the bars (blue)
     template=plotly_template,
     text=average_rent_by_region["Rent"].round(0).astype(int).apply(lambda x: f"${x}")  # Add text to the bars with dollar sign
 )
@@ -186,7 +190,7 @@ fig_days_on_market = px.bar(
     title="Average Days on Market by Region",
     template=plotly_template,
     text=average_days_on_market["Days in the Market"].round(0).astype(int),  # Add text to the bars with no decimal places
-    color_discrete_sequence=['#F46C3F']  # Set bar color to hex code F46C3F
+    color_discrete_sequence=['#F46C3F']  # Set bar color to hex code F46C3F (orange)
 )
 
 fig_days_on_market.update_traces(
@@ -232,7 +236,7 @@ fig_listing_volume = px.line(
 )
 
 fig_listing_volume.update_traces(
-    line=dict(color="black")  # Line color
+    line=dict(color="#1A4DA7")  # Line color blue
 )
 
 fig_listing_volume.update_layout(
