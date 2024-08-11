@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Hide GitHub button
+# Hide GitHub button, header, and footer
 st.markdown(
     """
     <style>
@@ -19,6 +19,8 @@ st.markdown(
     .viewerBadge_text__1JaDK {
         display: none;
     }
+    
+    footer {visibility: hidden;}
     </style>
     """,
     unsafe_allow_html=True
@@ -28,17 +30,14 @@ st.markdown(
 st.markdown(
     """
     <style>
-    /* Set the background color of the entire page to white */
     .main {
         background-color: white !important;
     }
-    /* Set the background color of the sidebar to white */
     .css-1d391kg {
         background-color: white !important;
     }
-    /* Set the background color of the app content to white */
     .css-18e3th9 {
-        background-color: white !important;
+        background-color: orange !important;
     }
     </style>
     """,
@@ -103,7 +102,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Count the number of properties scraped (based on the number of rows)
+# Count the number of properties scraped
 property_count = len(df_selection)
 
 # Calculate the average rent, ignoring NaN values
@@ -167,7 +166,7 @@ fig_average_rent.update_layout(
     font=dict(
         family="Arial, sans-serif",
         size=12,
-        color="white"  # Adjust font color
+        color="black"  # Adjust font color
     )
 )
 
