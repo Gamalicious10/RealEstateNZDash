@@ -38,7 +38,7 @@ st.markdown(
     }
     .css-18e3th9 {
         background-color: #1A4DA7 !important;  /* Sidebar background color */
-        color: white !important;  /* Sidebar text color */
+        color: black !important;  /* Sidebar text color */
     }
     .st-b4 {
         color: white !important;
