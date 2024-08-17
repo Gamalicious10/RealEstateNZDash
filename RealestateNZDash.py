@@ -54,7 +54,7 @@ df = pd.read_excel(
     engine='openpyxl',
     sheet_name='Data',
     usecols='A:P',
-    nrows=17821,
+    nrows=19806,
 )
 
 # Ensure Property Listing Date is in datetime format
