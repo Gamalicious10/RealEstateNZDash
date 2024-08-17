@@ -41,7 +41,7 @@ st.markdown(
         color: black !important;  /* Sidebar text color */
     }
     .st-b4 {
-        color: white !important;
+        color: black !important;
     }
     </style>
     """,
