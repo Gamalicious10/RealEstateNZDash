@@ -19,13 +19,13 @@ st.markdown(
     .viewerBadge_text__1JaDK {
         display: none;
     }
-    header {visibility: hidden;}
+    
     footer {visibility: hidden;}
     </style>
     """,
     unsafe_allow_html=True
 )
-
+#header {visibility: hidden;}
 # Add custom CSS to set background and sidebar colors
 st.markdown(
     """
