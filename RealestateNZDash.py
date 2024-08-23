@@ -246,6 +246,8 @@ listing_volume_filtered = listing_volume[
     (listing_volume.index <= pd.to_datetime(end_date))
 ]
 
+
+
 # Create the updated line chart based on the filtered date range
 fig_listing_volume = px.line(
     x=listing_volume_filtered.index,
