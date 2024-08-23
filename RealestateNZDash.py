@@ -19,7 +19,7 @@ st.markdown(
     .viewerBadge_text__1JaDK {
         display: none;
     }
-    
+    header {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
     """,
