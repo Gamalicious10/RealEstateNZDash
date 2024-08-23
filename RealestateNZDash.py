@@ -233,7 +233,7 @@ listing_volume = df_selection["Property Listed Date"].value_counts().sort_index(
 
 # Slider for date range, positioned below the Listing Volume chart
 start_date, end_date = st.slider(
-    "Select a date range for Property Listed Date:",
+    "Select a date range for Property Listing Volume:",
     min_value=df_selection["Property Listed Date"].min().date(),
     max_value=df_selection["Property Listed Date"].max().date(),
     value=(df_selection["Property Listed Date"].min().date(), df_selection["Property Listed Date"].max().date()),
