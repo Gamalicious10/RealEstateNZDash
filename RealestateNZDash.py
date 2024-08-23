@@ -56,7 +56,7 @@ df = pd.read_excel(
     usecols='A:P',
     nrows=19806,
 )
-
+  
 # Ensure Property Listing Date is in datetime format
 df["Property Listed Date"] = pd.to_datetime(df["Property Listed Date"])
 
