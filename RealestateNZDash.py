@@ -224,19 +224,39 @@ fig_days_on_market.update_layout(
     height=600,  # Set the height to 600 pixels
     showlegend=False  # Remove the legend
 )
+# Display the bar charts and line chart
+st.plotly_chart(fig_average_rent)
+st.plotly_chart(fig_days_on_market)
 
 # Create a line chart for Listing Volume
 listing_volume = df_selection["Property Listed Date"].value_counts().sort_index()
 
+# Slider for date range, positioned below the Listing Volume chart
+start_date, end_date = st.slider(
+    "Select a date range for Property Listed Date:",
+    min_value=df_selection["Property Listed Date"].min().date(),
+    max_value=df_selection["Property Listed Date"].max().date(),
+    value=(df_selection["Property Listed Date"].min().date(), df_selection["Property Listed Date"].max().date()),
+    format="MMMM YYYY"
+)
+
+# Filter data based on the selected date range from the slider
+listing_volume_filtered = listing_volume[
+    (listing_volume.index >= pd.to_datetime(start_date)) &
+    (listing_volume.index <= pd.to_datetime(end_date))
+]
+
+# Create the updated line chart based on the filtered date range
 fig_listing_volume = px.line(
-    x=listing_volume.index,
-    y=listing_volume.values,
+    x=listing_volume_filtered.index,
+    y=listing_volume_filtered.values,
     title="Property Listing Volume",
+    labels={"x": "Date", "y": "Volume"},  # Change the axis labels here
     template=plotly_template,
 )
 
 fig_listing_volume.update_traces(
-    line=dict(color="#1A4DA7")  # Line color blue
+    line=dict(color="#1A4DA7")  # Line color
 )
 
 fig_listing_volume.update_layout(
@@ -255,12 +275,8 @@ fig_listing_volume.update_layout(
         family="Arial, sans-serif",
         size=12,
         color="black"  # Adjust font color to black
-    ),
-    xaxis_title="Month",
-    yaxis_title="Listing Volume"
+    )
 )
 
-# Display the bar charts and line chart
-st.plotly_chart(fig_average_rent)
-st.plotly_chart(fig_days_on_market)
+
 st.plotly_chart(fig_listing_volume)
