@@ -131,7 +131,7 @@ st.markdown(
 
 # Style configuration for Plotly charts
 plotly_template = "plotly_white"
-plot_bgcolor = 'rgba(0,0,0,0)'
+plot_bgcolor = 'rgba(255, 255, 255, 0)'
 axis_style = dict(showgrid=False, color='black')
 
 # Creating a bar chart for Average Rent by Region
